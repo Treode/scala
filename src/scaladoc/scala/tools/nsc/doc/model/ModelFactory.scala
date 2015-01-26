@@ -1006,7 +1006,7 @@ class ModelFactory(val global: Global, val settings: doc.Settings) {
     aSym.info.members.exists(s => localShouldDocument(s) && (!s.isConstructor || s.owner == aSym))
 
   def localShouldDocument(aSym: Symbol): Boolean =
-    !aSym.isPrivate && (aSym.isProtected || aSym.privateWithin == NoSymbol) && !aSym.isSynthetic
+    (aSym.isProtected || aSym.privateWithin == NoSymbol) && !aSym.isSynthetic
 
   /** Filter '@bridge' methods only if *they don't override non-bridge methods*. See SI-5373 for details */
   def isPureBridge(sym: Symbol) = sym.isBridge && sym.allOverriddenSymbols.forall(_.isBridge)

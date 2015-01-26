@@ -290,7 +290,7 @@ class Template(universe: doc.Universe, generator: DiagramGenerator, tpl: DocTemp
 
   def memberToHtml(mbr: MemberEntity, inTpl: DocTemplateEntity): NodeSeq = {
     val memberComment = memberToCommentHtml(mbr, inTpl, isSelf = false)
-    <li name={ mbr.definitionName } visbl={ if (mbr.visibility.isProtected) "prt" else "pub" }
+    <li name={ mbr.definitionName } visbl={ if (mbr.visibility.isPublic) "pub" else "prt" }
       data-isabs={ mbr.isAbstract.toString }
       fullComment={ if(memberComment.filter(_.label=="div").isEmpty) "no" else "yes" }
       group={ mbr.group }>
